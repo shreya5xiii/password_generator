@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>html revise</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+   <div id="circle1"></div>
+   <div id="circle2"></div>
+   <div id="circle3"></div>
+   <div id="main">
+    <h1 id="h1">Passward Generator</h1>
+    <div id="check" >
+    <h4>Length <input type="text" placeholder="0" id="len"></h4>
+    <h4>Capital letters <input type="checkbox"  id="c1"></h4>
+    <h4>Small letters <input type="checkbox" id="c2" ></h4>
+    <h4>Numeric value<input type="checkbox"  id="c3" ></h4>
+    <h4>Special character<input type="checkbox"  id="c4" ></h4>
+   </div>
+   <div id="buttons">
+    <input type="text" id="final">
+    <button onclick="fun()">Generate</button>
+   </div>
+</div>
+<script>
+    function fun(){
+      const a=['c1','c2','c3','c4']
+     let b=a.filter((m)=>{return (document.getElementById(m).checked==true)})
+       let len=document.getElementById('len').value
+      if(len<b.length){
+        alert("Please enter length greater than number of checkboxes")
+        b=[]
+      }
+      if(b.length==0){
+      alert("Please check the checkboxes")
+        b=[]
+      }
+      const c1=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+      const c2=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+      const c3=[0,1,2,3,4,5,6,7,8,9]
+      const c4=['@','#','$','&']
+      let k=[]
+      function add(b){
+      for(let i of b){
+        if(i=='c1'){
+          k.push(c1[Math.floor(Math.random()*c1.length)])
+        }
+        else  if(i=='c2'){
+          k.push(c2[Math.floor(Math.random()*c2.length)])
+        }
+        else  if(i=='c3'){
+          k.push(c3[Math.floor(Math.random()*c3.length)])
+        }
+        else  if(i=='c4'){
+          k.push(c4[Math.floor(Math.random()*c4.length)])
+        }}
+      
+    }
+      add(b)
+      
+      let m=[]
+      for(let i=k.length;i<len;i++){
+       m.push(b[Math.floor(Math.random()*b.length)])
+      }
+     add(m)
+     
+     document.getElementById('final').value=k.join("")
+
+    }
+
+</script>
+</body>
+</html>
